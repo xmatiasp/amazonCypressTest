@@ -1,9 +1,11 @@
 import AmazonHomePageObj from '../../pages/AmazonPages/AmazonHomePageObj'
 import AmazonResultsPageObj from '../../pages/AmazonPages/AmazonResultsPageObj'
+import AmazonProductPageObj from '../../pages/AmazonPages/AmazonProductPageObj'
 
 //instanciando PageObj
 const amazonHomePO = new AmazonHomePageObj
 const amazonResultsPO = new AmazonResultsPageObj
+const amazonProductPO = new AmazonProductPageObj
 
 
 describe('Search element', () => {
@@ -21,9 +23,10 @@ describe('Search element', () => {
         amazonHomePO.searchProduct('Nintendo 64')
         amazonResultsPO.scrolTo(0, 500)
         amazonResultsPO.checkUsado()
-        cy.xpath('//div[@data-index="1"]//h2').should('include.text', 'Nintendo 64')
-        cy.xpath('//div[@data-index="1"]//h2').click()
-        cy.get('.a-section.a-spacing-base > :nth-child(1) > strong').should('include.text', 'Usado')
+        amazonResultsPO.checkBoxUsado().should('be.checked')
+        amazonResultsPO.divProduct().should('include.text', 'Nintendo 64')
+        amazonResultsPO.divProduct().click()
+        amazonProductPO.conditionText().should('include.text', 'Usado')
     }) 
 
 })
