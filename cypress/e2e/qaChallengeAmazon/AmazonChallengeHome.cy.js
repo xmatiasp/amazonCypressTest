@@ -6,7 +6,7 @@ const amazonHomePO = new AmazonHomePageObj
 const amazonResultsPO = new AmazonResultsPageObj
 const amazonProductPO = new AmazonProductPageObj
 
-describe('Amazon ', ()=>{
+describe('Amazon Tests', ()=>{
 
     before(() => {
         Cypress.on('uncaught:exception', (err, runnable) => {         
@@ -24,7 +24,7 @@ describe('Amazon ', ()=>{
         amazonResultsPO.divProduct().should('include.text', 'HP')
     });
 
-    it.only('Search laptop, filter by brand "HP" and add to cart', () => {
+    it('Search laptop, filter by brand "HP" and add to cart', () => {
         amazonHomePO.searchProduct("laptop")
         amazonResultsPO.checkHp()
         amazonResultsPO.clickDivProduct()
@@ -32,7 +32,7 @@ describe('Amazon ', ()=>{
         
     });
 
-    it('Search laptop, filter by brand "HP" and add 3 to cart', () => {
+    it.skip('Search laptop, filter by brand "HP" and add 3 to cart', () => {
         
     });
 
