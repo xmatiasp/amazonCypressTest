@@ -10,7 +10,7 @@ class AmazonResultsPageObj{
     }
 
     clickDivProduct(){
-        cy.xpath('//*[@id="search"]/div[1]/div[1]/div/span[3]/div[2]/div[2]//span[@class="a-size-medium a-color-base a-text-normal"]')
+        cy.xpath('//*[@id="search"]/div[1]/div[1]/div/span[3]/div[2]/div[3]//span[@class="a-size-medium a-color-base a-text-normal"]')
         .click()
     }
 

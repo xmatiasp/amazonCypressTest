@@ -29,11 +29,21 @@ describe('Amazon Tests', ()=>{
         amazonResultsPO.checkHp()
         amazonResultsPO.clickDivProduct()
         amazonProductPO.selectQuantity('2')
+        amazonProductPO.returnQuantity().should('have.text', '2 ')
+
         
     });
 
-    it.skip('Search laptop, filter by brand "HP" and add 3 to cart', () => {
-        
+    it('Search laptop, filter by brand "HP" and add 2 to cart', () => {
+        amazonHomePO.searchProduct("laptop")
+        amazonResultsPO.checkHp()
+        amazonResultsPO.clickDivProduct()
+        amazonProductPO.selectQuantity('2')
+        amazonProductPO.returnQuantity().should('have.text', '2 ')
+        amazonProductPO.clickAddToCartButton()
+        cy.xpath('//*[@id="sw-atc-details-single-container"]/div[2]/div/span').should('include.text',
+        'Agregado al carrito')
+
     });
 
 })
