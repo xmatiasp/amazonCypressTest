@@ -1,10 +1,12 @@
 import AmazonHomePageObj from '../../pages/AmazonChallengePO/AmazonHomePageObj'
 import AmazonResultsPageObj from '../../pages/AmazonChallengePO/AmazonResultsPageObj'
 import AmazonProductPageObj from '../../pages/AmazonChallengePO/AmazonProductPageObj'
+import AmazonCartConfirmPO from '../../pages/AmazonChallengePO/AmazonCartConfirmPO'
 
 const amazonHomePO = new AmazonHomePageObj
 const amazonResultsPO = new AmazonResultsPageObj
 const amazonProductPO = new AmazonProductPageObj
+const amazonCartConfirmPO = new AmazonCartConfirmPO
 
 describe('Amazon Tests', ()=>{
 
@@ -28,20 +30,21 @@ describe('Amazon Tests', ()=>{
         amazonHomePO.searchProduct("laptop")
         amazonResultsPO.checkHp()
         amazonResultsPO.clickDivProduct()
-        amazonProductPO.selectQuantity('2')
-        amazonProductPO.returnQuantity().should('have.text', '2 ')
+        amazonProductPO.clickAddToCartButton()
+        amazonCartConfirmPO.addedToCartConfirmMessage().should('include.text',        
+        'Agregado al carrito')
 
         
     });
 
-    it('Search laptop, filter by brand "HP" and add 2 to cart', () => {
+    it.skip('Search laptop, filter by brand "HP" and add 2 to cart', () => {
         amazonHomePO.searchProduct("laptop")
         amazonResultsPO.checkHp()
         amazonResultsPO.clickDivProduct()
         amazonProductPO.selectQuantity('2')
         amazonProductPO.returnQuantity().should('have.text', '2 ')
         amazonProductPO.clickAddToCartButton()
-        cy.xpath('//*[@id="sw-atc-details-single-container"]/div[2]/div/span').should('include.text',
+        amazonCartConfirmPO.addedToCartConfirmMessage().should('include.text',
         'Agregado al carrito')
 
     });

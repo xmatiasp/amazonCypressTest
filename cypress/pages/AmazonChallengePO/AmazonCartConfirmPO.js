@@ -1,9 +1,10 @@
-class AmazonResultsPageObj{
+class AmazonCartConfirmPO{
 
     //locators
     addedToCartConfirmMessage(){
         return cy.xpath('//*[@id="attachDisplayAddBaseAlert"]/span')
+        
     }
 }
 
-export default AmazonResultsPageObj
+export default AmazonCartConfirmPO
